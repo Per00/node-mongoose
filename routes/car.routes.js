@@ -14,6 +14,7 @@ carRouter.post("/", async (req, res) => {
     return res.status(201).json(newCar);
   } catch (err) {
     console.log(err);
+    return res.status(500).json(err);
   }
 });
 
@@ -24,6 +25,7 @@ carRouter.get("/", async (req, res) => {
     return res.status(201).json(cars);
   } catch (err) {
     console.log(err);
+    return res.status(500).json(err);
   }
 });
 
@@ -36,6 +38,7 @@ carRouter.get("/:carId", async (req, res) => {
     return res.status(200).json(car);
   } catch (err) {
     console.log(err);
+    return res.status(500).json(err);
   }
 });
 
@@ -50,8 +53,10 @@ carRouter.put("/:carId", async (req, res) => {
       { ...req.body },
       { new: true, runValidators: true }
     );
+    return res.status(200).json(car);
   } catch (err) {
     console.log(err);
+    return res.status(500).json(err);
   }
 });
 
@@ -64,6 +69,7 @@ carRouter.delete("/:carId", async (req, res) => {
     return res.status(201).json(del);
   } catch (err) {
     console.log(err);
+    return res.status(500).json(err);
   }
 });
 
